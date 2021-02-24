@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+.dashboard-container{
+	background: linear-gradient(#2F80ED, #56CCF2);
+	padding-top: 25px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.yAxis{
+	color: white;
+}
+
+.company-info-container{
+	padding-top: 20px;
+	font-family: "Source Sans Pro";
+	color: white;
+	float: left;
+	margin-left: 10%;
+}
+
+#company-info-specifics{
+	margin-top: 5px;
+}
+
+#companyHeader{
+	letter-spacing: 1px;
+	font-weight: 100;
+	font-size: 36px;
+}
+
+#stock-price{
+	font-size: 28px;
+}
+
+
+
+#price{
+	font-weight: bold;
+}
+
+.recharts-wrapper{
+	float: right;
+	margin-right: 200px;
+}
