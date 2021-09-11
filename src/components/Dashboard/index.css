@@ -20,7 +20,28 @@
 }
 
 #company-info-specifics{
-	margin-top: 5px;
+	padding-top: 10px;
+}
+
+
+#company-ceo{
+	margin: auto;
+}
+
+#company-location{
+	margin: auto;
+}
+
+#company-industry{
+	margin: auto;
+}
+
+#company-sector{
+	margin: auto;
+}
+
+#company-employees{
+	margin: auto;
 }
 
 #companyHeader{
