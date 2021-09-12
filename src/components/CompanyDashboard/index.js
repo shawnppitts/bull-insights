@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Image, Statistic, Tab } from 'semantic-ui-react';
-import { LineChart, Line, XAxis, YAxis, AreaChart, CartesianGrid, Tooltip, Area } from 'recharts';
+import { Statistic, Tab } from 'semantic-ui-react';
+import { XAxis, YAxis, AreaChart, CartesianGrid, Tooltip, Area } from 'recharts';
 import News from '../News/index';
 import BalanceSheet from '../BalanceSheet/index';
 import IncomeStatement from '../IncomeStatement/index';
 import './index.css';
 
-class Dashboard extends Component{
+class CompanyDashboard extends Component{
 	render(){
 		const { companyData, companyChart, companyNews, price, income, balanceSheet, cashFlow } = this.props;			
 		const companyHeader = `${companyData.companyName} | ${companyData.symbol}`;
@@ -15,12 +15,11 @@ class Dashboard extends Component{
 		  	{ menuItem: 'News', render: () => <Tab.Pane><News data={companyNews}/></Tab.Pane> },
 		  	{ menuItem: 'Balance Sheet Analysis', render: () => <Tab.Pane><BalanceSheet data={balanceSheet}/></Tab.Pane> },
 		  	{ menuItem: 'Income Statement Analysis', render: () => <Tab.Pane><IncomeStatement data={income}/></Tab.Pane> },
-		  	{ menuItem: 'Cash Flow Analysis', render: () => <Tab.Pane>Cash Flow Analaysis</Tab.Pane> }
+		  	{ menuItem: 'Cash Flow Analysis', render: () => <Tab.Pane data={cashFlow}>Cash Flow Analaysis</Tab.Pane> }
 
 		];		
 
 		const switchTabs = () => <Tab panes={panes} />
-
 		return(
 			<div>
 				<div className="dashboard-container">
@@ -62,4 +61,4 @@ class Dashboard extends Component{
 	}
 }
 
-export default Dashboard;
+export default CompanyDashboard;

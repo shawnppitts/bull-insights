@@ -10,7 +10,7 @@ class IncomeStatement extends Component{
 		const {data} = this.props;
 		console.log(data);
 		return(
-			<h1>IncomeStatement</h1>
+			<p>IncomeStatement</p>
 		)
 	}
 
