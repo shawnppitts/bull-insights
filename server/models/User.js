@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
-const User = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
 	fullName: {
 		type: String,
 		required: true
@@ -20,7 +21,19 @@ const User = new mongoose.Schema({
 	date: {
 		type: Date,
 		default: Date.now
+	},
+	isDeleted: {
+		type: Boolean,
+		default: false
 	}
 });
 
-module.exports = mongoose.model('users', User);
+UserSchema.methods.generateHash = function(password){
+	return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+}
+
+UserSchema.methods.validPassword = function(password){
+	return bcrypt.compareSync(password, this.password);
+}
+
+module.exports = mongoose.model('users', UserSchema);

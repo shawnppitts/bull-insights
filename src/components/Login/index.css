@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+.flex-wrapper {
+	font-family: "Source Sans Pro";
+	padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#username{
+	width: 350px;
+}
+
+#submit-btn-wrapper{
+	padding-top: 20px;
+}
+
+#submit{
+	width: 350px;
+}

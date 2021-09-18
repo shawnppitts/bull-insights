@@ -6,12 +6,13 @@ const UserSessionModel = require('../../models/UserSession');
 
 router.post('/login', async (request, response) => {
 	const { body } = request;
-	const {fullName, username, email, password} = body;
+	const { username, password} = body;
 
 	// Save the use
 	UserModel.find({
-		email:email
+		username:username
 	}, (error, users) => {
+		console.log(error);
 		if (error){
 			return response.send({
 				success: false,
@@ -38,6 +39,7 @@ router.post('/login', async (request, response) => {
 
 		userSession.userId = user._id;
 		userSession.save((error, doc) => {
+			console.log(error);
 			if (error){
 				return response.send({
 					success: false,
@@ -50,6 +52,5 @@ router.post('/login', async (request, response) => {
 				token: doc._id
 			});						
 		});
-
 	});
 });
