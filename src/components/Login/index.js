@@ -1,23 +1,25 @@
 import React, { Component } from "react";
-import { Form, Input, Button } from 'semantic-ui-react'
+import { Form, Input, Button } from 'semantic-ui-react';
 import axios from 'axios';
 import './index.css';
 
 class Login extends Component{
-
     constructor(props){
         super(props);
         this.state = {
-            username: "",
-            password: ""
+            email: "",
+            password: "",
+            loginMessage: "",
+            loginSuccess: "",
+            token: ""
         }
-        this.setUsername = this.setUsername.bind(this);
+        this.setEmail = this.setEmail.bind(this);
         this.setPassword = this.setPassword.bind(this);
         this.login = this.login.bind(this);
     }
 
-    setUsername(event){
-        this.setState({username: event.target.value});
+    setEmail(event){
+        this.setState({email: event.target.value});
     }
 
     setPassword(event){
@@ -25,17 +27,30 @@ class Login extends Component{
     }    
 
     login(event){
-        event.preventDefault();
+        const { email, password } = this.state;
 
         const userDetails = {
-            username: this.state.username,
-            password: this.state.password
+            email,
+            password
         }
-        const registerUrl = "http://localhost:4000/v1/login";
+        const registerUrl = "http://localhost:4000/api/login";
 
         axios.post(registerUrl, userDetails)
             .then(response => {
-                console.log(response.data);
+                console.log(response);
+                const {success, message} = response.data;                
+                if (success){
+                    this.setState({
+                        signUpMessage: message,
+                        signUpSuccess: success
+                    });
+                    console.log(message);
+                } else {
+                    this.setState({
+                        signUpMessage: message,
+                        signUpSuccess: success
+                    });
+                }
             });
     }  
 
@@ -43,10 +58,10 @@ class Login extends Component{
         return (
             <div className="flex-wrapper">
                 <h1 className="flex-header">Login</h1>
-                <Form onSubmit={this.login}>
+                <Form >
                     <Form.Field required>
-                        <label className="input-label">Username</label>
-                        <Input onChange={this.setUsername} className="login-inputs" placeholder='Enter Username' />
+                        <label className="input-label">Email</label>
+                        <Input onChange={this.setEmail} className="login-inputs" placeholder='Enter Email' />
                     </Form.Field>
                     <Form.Field required>
                         <label className="input-label">Password</label>

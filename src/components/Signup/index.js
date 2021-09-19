@@ -11,7 +11,9 @@ class Signup extends Component{
             fullName: "",
             username: "",
             email: "",
-            password: ""
+            password: "",
+            signUpMessage: "",
+            signUpSuccess: ""
         }
         this.setFullname = this.setFullname.bind(this);        
         this.setUsername = this.setUsername.bind(this);
@@ -49,7 +51,21 @@ class Signup extends Component{
 
         axios.post(registerUrl, userDetails)
             .then(response => {
-                console.log(response.data);
+                const {success, message} = response.data;                
+                if (success){
+                    this.setState({
+                        signUpMessage: message,
+                        signUpSuccess: success
+                    });
+
+                    console.log(message);
+                } else {
+                    this.setState({
+                        signUpMessage: message,
+                        signUpSuccess: success
+                    });
+                    console.log(message);                                                            
+                }
             });        
     } 
 

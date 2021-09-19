@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const UserModel = require('../../models/User');
 const UserSessionModel = require('../../models/UserSession');
+const bcrypt = require('bcrypt');
 
 // Signup USER
 router.post('/register', async (request, response) => {
@@ -26,7 +27,9 @@ router.post('/register', async (request, response) => {
 		email: email,
 		password: password
 	});
-
+	
+	const salt = await bcrypt.genSalt(10);
+	user.password = await bcrypt.hash(user.password, salt);
 	// Save the user
 	user.save((error, user) => {
 		if (error) {
@@ -35,7 +38,10 @@ router.post('/register', async (request, response) => {
 				message: "Error: Cannot register user"
 			})
 		}
-		return response.send("User successfully registered!")
+		return response.send({
+			success: true,
+			message: `Welcome to Bull Insights ${email}!`
+		})
 	})
 });
 
@@ -54,9 +60,7 @@ router.post('/login', async (request, response) => {
 				success: false,
 				message: "Error: Server Error"
 			})
-		}
-
-		email = email.toLowerCase();
+		}		
 
 		if (users.length != 1){
 			return response.send({
@@ -66,18 +70,16 @@ router.post('/login', async (request, response) => {
 		}
 
 		const user = users[0];
-		console.log(`User: ${user}`);
-
-		// if (!user.validPassword(password)){
-		// 	return response.send({
-		// 		success: false,
-		// 		message: "Incorrect Password"
-		// 	})			
-		// }
+		if (!user.validPassword(password)){
+			response.send({
+				success: false,
+				message: 'Error: Invalid Password'
+			})
+		}
 
 		const userSession = new UserSessionModel();
-
 		userSession.userId = user._id;
+		userSession.email = user.email;
 		userSession.save((error, doc) => {
 			if (error){
 				return response.send({
@@ -87,7 +89,7 @@ router.post('/login', async (request, response) => {
 			}
 			return response.send({
 				success: true,
-				message: "Valid Signin",
+				message: `Successfully Signed in! Welcome, ${email}`,
 				token: doc._id
 			});						
 		});
@@ -125,7 +127,7 @@ router.get('/verify', async (request, response) => {
 	});
 });
 
-// Logout USER
+// Logout USERs
 router.get('/logout', async (request, response) => {
 	// Get Token
 	const { query } = request;
