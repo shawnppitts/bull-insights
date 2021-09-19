@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 // Signup USER
 router.post('/register', async (request, response) => {
 	const { body } = request;
-	const {fullName, username, email, password} = body;
+	const { fullName, username, email, password} = body;
 
 	// Verify email does not exist in db
 	UserModel.find({
@@ -101,10 +101,10 @@ router.get('/verify', async (request, response) => {
 	// Get Token
 	const { query } = request;
 	const { token } = query;
-	// Verify Token is unique
 
+	// Verify Token is unique
 	UserSessionModel.find({
-		_id: token
+		_id: JSON.stringify(token)
 	}, (error, sessions) => {
 		if (error){
 			return response.send({

@@ -9,9 +9,11 @@ class Login extends Component{
         this.state = {
             email: "",
             password: "",
-            loginMessage: "",
-            loginSuccess: "",
-            token: ""
+            loginDetails: {
+                message: "",
+                success: "",
+                token: "" 
+            }           
         }
         this.setEmail = this.setEmail.bind(this);
         this.setPassword = this.setPassword.bind(this);
@@ -37,18 +39,24 @@ class Login extends Component{
 
         axios.post(registerUrl, userDetails)
             .then(response => {
-                console.log(response);
-                const {success, message} = response.data;                
+                const {success, message, token} = response.data;                
                 if (success){
                     this.setState({
-                        signUpMessage: message,
-                        signUpSuccess: success
+                        loginDetails: {
+                            message,
+                            success,
+                            token
+                        }
                     });
-                    console.log(message);
+                    console.log(`${message}`);
+                    this.props.sendLoginDetails(this.state.loginDetails);                
                 } else {
                     this.setState({
-                        signUpMessage: message,
-                        signUpSuccess: success
+                        loginDetails: {
+                            message,
+                            success,
+                            token
+                        }
                     });
                 }
             });
