@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+
+#logout-btn{
+	font-family: "Slabo 27px";
+	font-weight: 300;
+	font-size: 16px;
+	letter-spacing: 0.3px;
+	text-transform: uppercase;
+	background: none;
+	border: 2px solid #BF953F;
+	border-radius: 0px;
+	width: 150px;
+}
+
+#logout-btn:hover{
+	background: #BF953F;	
+	color: white;
+}

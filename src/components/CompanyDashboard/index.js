@@ -34,10 +34,10 @@ class CompanyDashboard extends Component{
 								<p id="company-employees"> Employees: {companyData.employees}</p>
 							</div>
 						</div>
-						<AreaChart width={500} height={250} data={companyChart}> 
+						<AreaChart width={575} height={275} data={companyChart}> 
 							<defs>
 						    	<linearGradient id="colorClose" x1="0" y1="0" x2="0" y2="1">
-						      		<stop offset="5%" stopColor="#78ffd6" stopOpacity={1}/>
+						      		<stop offset="5%" stopColor="red" stopOpacity={1}/>
 						      		<stop offset="95%" stopColor="#FFF" stopOpacity={0.5}/>
 						  		</linearGradient>
 						  		<linearGradient id="colorOpen" x1="0" y1="0" x2="0" y2="1">
@@ -45,8 +45,8 @@ class CompanyDashboard extends Component{
 								    <stop offset="95%" stopColor="#a8ff78" stopOpacity={0.3}/>
 							    </linearGradient>
 						  	</defs>
-						  	<XAxis dataKey="date" />
-						  	<YAxis dataKey="close" />
+						  	<XAxis dataKey="date"/>
+						  	<YAxis tickCount="9" dataKey="close"/>
 						  	<CartesianGrid strokeDasharray="2 1 2" />
 						  	<Tooltip />
 						  	<Area type="linear" dataKey="open" stroke="#00C9FF" fillOpacity={1} fill="url(#colorOpen)" />

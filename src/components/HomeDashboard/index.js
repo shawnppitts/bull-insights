@@ -35,7 +35,6 @@ class HomeDashboard extends Component {
         fetch(bulkRequest)
         .then(response => response.json())
         .then((data) => {
-            console.log(data);
             this.setState({
                 companyData: data.company,
                 companyChart: data.chart,
@@ -47,7 +46,6 @@ class HomeDashboard extends Component {
         })
         .then(response => response.json())
         .then((data) => {
-            console.log(data);
             this.setState({
                 income: data.income,
                 balanceSheet: data["balance-sheet"],

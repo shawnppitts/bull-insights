@@ -1,30 +1,36 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import Login from '../Login/index';
 import Logout from '../Logout/index';
-import { Menu, Image } from 'semantic-ui-react'
+import { Menu, Image } from 'semantic-ui-react';
+import './index.css';
 
-class Navbar extends Component{
-    render(){
-        return (
+const Navbar = () => {
+    return (
             <div id="navbar">
                 <Menu borderless="true" size='huge'>                
                         <Menu.Item className="menu-item">
-                            <Image size="small" src="./bull-logo.png"/>
+                            <Image id="logo" size="small" src="https://bull-insights.s3.amazonaws.com/images/bull-logo.png"/>
                         </Menu.Item>
-
-                        <Menu.Menu position='right'>                                                                         
-                            <Menu.Item className="menu-item">                            
+                        <Menu.Menu position='right'>
+                            <Menu.Item>                            
+                                <h3 className="menu-item">News</h3>                              
+                            </Menu.Item>
+                            <Menu.Item>                            
+                                <h3 className="menu-item">Blog</h3>                              
+                            </Menu.Item>
+                            <Menu.Item>                            
+                                <h3 className="menu-item">Company</h3>                              
+                            </Menu.Item>                                                                                                                                                          
+                            <Menu.Item>                            
                                 <Login />                              
                             </Menu.Item>                            
-                            <Menu.Item className="menu-item">
+                            <Menu.Item>
                                 <Logout />                              
                             </Menu.Item>                            
                         </Menu.Menu>
                 </Menu>
             </div>
-        );
-    }
+    )   
 }
 
 export default Navbar;

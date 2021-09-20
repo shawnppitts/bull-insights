@@ -1,21 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 
-.flex-wrapper {
-	font-family: "Source Sans Pro";
-	padding-top: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#login-btn{
+	font-family: "Slabo 27px";
+	font-weight: 300;
+	font-size: 16px;
+	letter-spacing: 0.3px;
+	text-transform: uppercase;
+	background: none;
+	border: 2px solid #BF953F;
+	border-radius: 0px;
+	width: 150px;
 }
 
-#username{
-	width: 350px;
-}
-
-#submit-btn-wrapper{
-	padding-top: 20px;
-}
-
-#submit{
-	width: 350px;
+#login-btn:hover{
+	background: #BF953F;	
+	color: white;
 }

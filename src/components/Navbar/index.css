@@ -1,1 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+
+.menu-item{
+	font-family: "Source Sans Pro";
+	font-weight: 100;
+	text-transform: uppercase;
+	font-size: 16px;	
+}

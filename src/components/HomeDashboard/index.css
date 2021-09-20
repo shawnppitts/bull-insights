@@ -4,7 +4,7 @@
 #nav-container{
 	text-align: center;
 	height:60px;
-	border-bottom: 1px solid #d9d9d9;
+	border-bottom: none;
 }
 
 #input-container{
@@ -20,7 +20,7 @@
 
 #search-button{
 	margin-left: 10px;
-	background: #3F5EFB;
+	background: #BF953F;
 	color: white;
 	font-family: "Source Sans Pro";
 	font-weight: 100;

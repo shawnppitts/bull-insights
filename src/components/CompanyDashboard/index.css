@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 .dashboard-container{
-	background: linear-gradient(#2F80ED, #56CCF2);
+/*	background: linear-gradient(#BF953F, #56CCF2);*/	
+	background: #424242;
 	padding-top: 25px;
 	display: flex;
 	justify-content: space-between;
@@ -22,7 +23,6 @@
 #company-info-specifics{
 	padding-top: 10px;
 }
-
 
 #company-ceo{
 	margin: auto;
@@ -53,8 +53,6 @@
 #stock-price{
 	font-size: 28px;
 }
-
-
 
 #price{
 	font-weight: bold;
