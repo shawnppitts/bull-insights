@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+
+#company-banner{
+	text-align: center;
+	padding-top: 200px;
+	font-size: 7em;
+	font-family: "Slabo 27px";
+	letter-spacing: 10px;
+}
+
+#company-description{
+	text-align: center;
+	font-size: 22px;
+	letter-spacing: 1px;
+	font-weight: 200;
+}
