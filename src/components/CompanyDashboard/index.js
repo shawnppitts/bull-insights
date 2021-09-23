@@ -36,21 +36,16 @@ class CompanyDashboard extends Component{
 						</div>
 						<AreaChart width={575} height={275} data={companyChart}> 
 							<defs>
-						    	<linearGradient id="colorClose" x1="0" y1="0" x2="0" y2="1">
-						      		<stop offset="5%" stopColor="red" stopOpacity={1}/>
-						      		<stop offset="95%" stopColor="#FFF" stopOpacity={0.5}/>
-						  		</linearGradient>
-						  		<linearGradient id="colorOpen" x1="0" y1="0" x2="0" y2="1">
-									<stop offset="5%" stopColor="#a8ff78" stopOpacity={1}/>
-								    <stop offset="95%" stopColor="#a8ff78" stopOpacity={0.3}/>
+						  		<linearGradient id="colorClose" x1="0" y1="0" x2="0" y2="1">
+									<stop offset="5%" stopColor="#BF953F" stopOpacity={1}/>
+								    <stop offset="95%" stopColor="#BF953F" stopOpacity={0.3}/>
 							    </linearGradient>
 						  	</defs>
 						  	<XAxis dataKey="date"/>
 						  	<YAxis tickCount="9" dataKey="close"/>
 						  	<CartesianGrid strokeDasharray="2 1 2" />
 						  	<Tooltip />
-						  	<Area type="linear" dataKey="open" stroke="#00C9FF" fillOpacity={1} fill="url(#colorOpen)" />
-						  	<Area type="linear" dataKey="close" stroke="#00C9FF" fillOpacity={1} fill="url(#colorClose)" />					  	
+						  	<Area type="linear" dataKey="close" stroke="#BF953F" fillOpacity={1} fill="url(#colorClose)" />					  	
 						</AreaChart>
 				</div>
 				<div className="tab-container">

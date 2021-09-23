@@ -8,6 +8,7 @@ class BalanceSheet extends Component{
 
 	render(){		
 		const {data} = this.props;
+		console.log(data);
 		let balanceSheet = data.balancesheet;
 		let orderedBalanceSheet = balanceSheet.map((val, index, array) => array[array.length - 1 - index]);
 
@@ -16,7 +17,7 @@ class BalanceSheet extends Component{
 				 	<Table key={index} celled className="bs-table">
 				    	<Table.Header>
 				      		<Table.Row>
-				        		<Table.HeaderCell>{value.fiscalDate}</Table.HeaderCell>
+				        		<Table.HeaderCell>{value.reportDate}</Table.HeaderCell>
 				        		<Table.HeaderCell>Value</Table.HeaderCell>
 				      		</Table.Row>
 				    	</Table.Header>

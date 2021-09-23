@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
 
 #logout-btn{
-	font-family: "Slabo 27px";
+	font-family: "Source Sans Pro";
 	font-weight: 300;
 	font-size: 16px;
 	letter-spacing: 0.3px;

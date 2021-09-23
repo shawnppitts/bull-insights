@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Button } from 'semantic-ui-react';
+import { Input, Button, Header, Dropdown, Icon } from 'semantic-ui-react';
 import CompanyDashboard from '../CompanyDashboard/index';
 import './index.css';
 
@@ -16,10 +16,11 @@ class HomeDashboard extends Component {
             balanceSheet: null,
             cashFlow: null,
             price: null,
-            dateRange: null
+            dateRange: '5y'
         }
         this.handleChange = this.handleChange.bind(this);
         this.fetchFinancialData = this.fetchFinancialData.bind(this);
+        this.timeChange = this.timeChange.bind(this);
     }
 
     handleChange(event) {
@@ -27,9 +28,14 @@ class HomeDashboard extends Component {
         this.setState({value: formatSymbol});
     }
 
+    timeChange(event){
+        const dropDownValue = event.target.innerText;
+
+        this.setState({dateRange: dropDownValue});
+    }
+
     async fetchFinancialData(){
-        console.log('fetching...');
-        const bulkRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=company,chart,news,price&range=5y&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
+        const bulkRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=company,chart,news,price&range=${this.state.dateRange}&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
         const financialsRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=balance-sheet,income,cash-flow&period=annual&last=4&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
 
         fetch(bulkRequest)
@@ -56,12 +62,47 @@ class HomeDashboard extends Component {
 
 
     render(){
+        const options = [
+            {
+                key: '1M',
+                text: '1M',
+                value: '1M',
+                content: '1M',
+            },
+            {
+                key: '6M',
+                text: '6M',
+                value: '6M',
+                content: '6M',
+            },
+            {
+                key: '1Y',
+                text: '1Y',
+                value: '1Y',
+                content: '1Y',
+            },
+            {
+                key: '5Y',
+                text: '5Y',
+                value: '5Y',
+                content: '5Y',
+            },                        
+        ]
+
         return (
             <div className="App">
                 <div id="nav-container">
                     <div id="input-container">
                         <Input name="symbol" id="ticker-input" placeholder='Enter Ticker Symbol...' value={this.state.value} onChange={this.handleChange}/>
                         <Button id="search-button" ref={this.textInput} onClick={this.fetchFinancialData}>Search</Button>
+                            <Icon name='calendar alternate' />
+                            <Dropdown
+                                inline
+                                onChange={this.timeChange}
+                                header='Adjust time span'
+                                options={options}
+                                defaultValue={options[0].value}
+                            />
                     </div>
                 </div>
                 <div id="app-body">
