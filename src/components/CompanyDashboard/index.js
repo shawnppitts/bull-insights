@@ -12,7 +12,7 @@ class CompanyDashboard extends Component{
 		const companyHeader = `${companyData.companyName} | ${companyData.symbol}`;
 
 		const panes = [
-		  	{ menuItem: 'News', render: () => <Tab.Pane><News data={companyNews}/></Tab.Pane> },
+		  	{ menuItem: 'Company News', render: () => <Tab.Pane><News data={companyNews}/></Tab.Pane> },
 		  	{ menuItem: 'Balance Sheet Analysis', render: () => <Tab.Pane><BalanceSheet data={balanceSheet}/></Tab.Pane> },
 		  	{ menuItem: 'Income Statement Analysis', render: () => <Tab.Pane><IncomeStatement data={income}/></Tab.Pane> },
 		  	{ menuItem: 'Cash Flow Analysis', render: () => <Tab.Pane data={cashFlow}>Cash Flow Analaysis</Tab.Pane> }

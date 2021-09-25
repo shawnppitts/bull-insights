@@ -17,7 +17,7 @@ class News extends Component{
 	    	<div>
 		    	{data.map((article, index) => (		    		
 		    		<div className="article" key={index}>
-		        		<a href={article.url} key={index+1} id={index}>{article.headline}</a>
+		        		<a href={article.url} className="article-headlines" key={index+1} id={index}>{article.headline}</a>
 		        		<p key={index+2}>{article.source} | {convertEpochMilliseconds(article)}</p>
 		        	</div>		        	
 		    	))}

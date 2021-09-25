@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar/index';
 import HomePage from './components/HomePage/index';
-
-
+import HomePageBanner from './components/HomePageBanner/index';
 import './App.css';
 
 class App extends Component{
@@ -10,7 +9,10 @@ class App extends Component{
         return (
             <div>
                 <Navbar />
-                <HomePage />
+                <div className="app-body">
+                	<HomePage />
+                    <HomePageBanner />
+                </div>
             </div>                                    
         );
     }

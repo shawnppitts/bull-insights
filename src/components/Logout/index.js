@@ -4,12 +4,10 @@ import { Button } from 'semantic-ui-react';
 import './index.css';
  
 const Logout = () => {
-    const { logout, isAuthenticated } = useAuth0();
+    const { logout } = useAuth0();
 
     return(
-        isAuthenticated && (
-            <Button id="logout-btn" onClick={() => logout()}>Logout</Button>
-        )
+    	<Button id="logout-btn" onClick={() => logout()}>Logout</Button>        
     );
 }
 

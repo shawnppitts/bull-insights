@@ -4,12 +4,10 @@ import { Button } from 'semantic-ui-react';
 import './index.css';
  
 const Login = () => {
-    const { loginWithRedirect, isAuthenticated } = useAuth0();
+    const { loginWithRedirect } = useAuth0();
 
     return(
-        !isAuthenticated && (
-            <Button id="login-btn" onClick={() => loginWithRedirect()}>Login</Button>
-        )
+    	<Button id="login-btn" onClick={() => loginWithRedirect()}>Login</Button>        
     );
 }
 

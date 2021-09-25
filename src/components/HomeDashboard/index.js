@@ -35,15 +35,14 @@ class HomeDashboard extends Component {
     }
 
     async fetchFinancialData(){
-        const bulkRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=company,chart,news,price&range=${this.state.dateRange}&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
-        const financialsRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=balance-sheet,income,cash-flow&period=annual&last=4&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
+        const bulkRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=company,news,price&range=${this.state.dateRange}&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
+        const financialsRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=balance-sheet,income,cash-flow,chart&period=annual&last=5&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
 
         fetch(bulkRequest)
         .then(response => response.json())
         .then((data) => {
             this.setState({
                 companyData: data.company,
-                companyChart: data.chart,
                 companyNews: data.news,
                 price: data.price       
             });
@@ -54,6 +53,7 @@ class HomeDashboard extends Component {
         .then((data) => {
             this.setState({
                 income: data.income,
+                companyChart: data.chart,
                 balanceSheet: data["balance-sheet"],
                 cashFlow: data["cash-flow"]
             })

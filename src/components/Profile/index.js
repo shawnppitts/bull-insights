@@ -1,21 +1,37 @@
-import React from "react";
+import React, { Component } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button, Image } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 import './index.css';
- 
-const Profile = () => {
-    const { user, isAuthenticated } = useAuth0();
 
-    return(
-    	isAuthenticated && (
-	        <div>
-	        	<Image src={user.picture}/>
-	        	<h1>{user.name}</h1>
-	        	<p>{user.email}</p>
-	        	{JSON.stringify(user, null, 2)}
-	        </div>
-        )
-    );
+
+class Profile extends Component {
+	constructor(props){
+		super(props);
+	}
+
+	render(){
+		const { user } = this.props;
+		const options = [
+			{
+			    key: 'user',
+			    value: `${user.email}`,
+				image: { avatar: true, src: `${user.picture}` },
+			},
+			{
+			    key: 'billing',
+			    value: 'billing',
+				text: 'Billing',
+			}			
+		]
+
+		return(
+			<Dropdown       
+				inline
+      			options={options}
+      			defaultValue={options[0].value}
+      		/>
+		)
+	}
 }
 
 export default Profile;

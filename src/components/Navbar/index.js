@@ -1,10 +1,14 @@
 import React from 'react';
 import Login from '../Login/index';
 import Logout from '../Logout/index';
+import Profile from '../Profile/index';
+import { useAuth0 } from "@auth0/auth0-react";
 import { Menu, Image } from 'semantic-ui-react';
 import './index.css';
 
 const Navbar = () => {
+    const { user, isAuthenticated } = useAuth0();
+
     return (
             <div id="navbar">
                 <Menu borderless="true" size='huge'>                
@@ -20,12 +24,16 @@ const Navbar = () => {
                             </Menu.Item>
                             <Menu.Item>                            
                                 <h3 className="menu-item">Company</h3>                              
-                            </Menu.Item>                                                                                                                                                          
+                            </Menu.Item>
+                            {
+                                isAuthenticated ? 
+                                    <Menu.Item>
+                                        <Profile user={user}/>
+                                    </Menu.Item>
+                                : <div></div>
+                            }                                                                                                                                                                                      
                             <Menu.Item>                            
-                                <Login />                              
-                            </Menu.Item>                            
-                            <Menu.Item>
-                                <Logout />                              
+                                {isAuthenticated ? <Logout /> : <Login /> }
                             </Menu.Item>                            
                         </Menu.Menu>
                 </Menu>
