@@ -7,9 +7,8 @@ class PopupModal extends Component{
             <Popup
                 content={
                     <div className="terms">
-                        <p><b>Accounts Payable</b> - Accounts payable (AP) are amounts due to vendors or suppliers for goods or services received that have not yet been paid for</p>
-                        <p><b>Current Assets</b> - represent all the assets of a company that are expected to be conveniently sold, consumed, used, or exhausted through standard business operations with one year</p>
-                        <p><b>Current Liabilities</b> - Current liabilities are a company's short-term financial obligations that are due within one year or within a normal operating cycle</p>
+                        <p><b>Current Assets</b> - Assets that can be converted to cash (liquidated) within 1 year</p>
+                        <p><b>Current Liabilities</b> - Debts that need to be paid within 1 year</p>
                     </div>
                 }
                 on='click'

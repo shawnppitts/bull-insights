@@ -30,19 +30,22 @@ class HomeDashboard extends Component {
 
     timeChange(event){
         const dropDownValue = event.target.innerText;
+        console.log(dropDownValue);
 
         this.setState({dateRange: dropDownValue});
     }
 
     async fetchFinancialData(){
-        const bulkRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=company,news,price&range=${this.state.dateRange}&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
-        const financialsRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=balance-sheet,income,cash-flow,chart&period=annual&last=5&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
-
+        const bulkRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=company,news,price,chart&range=${this.state.dateRange}&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
+        const financialsRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=balance-sheet,income,cash-flow&period=annual&last=5&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
+        console.log(bulkRequest);
+        
         fetch(bulkRequest)
         .then(response => response.json())
         .then((data) => {
             this.setState({
                 companyData: data.company,
+                companyChart: data.chart,                
                 companyNews: data.news,
                 price: data.price       
             });
@@ -53,7 +56,6 @@ class HomeDashboard extends Component {
         .then((data) => {
             this.setState({
                 income: data.income,
-                companyChart: data.chart,
                 balanceSheet: data["balance-sheet"],
                 cashFlow: data["cash-flow"]
             })
@@ -64,28 +66,28 @@ class HomeDashboard extends Component {
     render(){
         const options = [
             {
-                key: '1M',
-                text: '1M',
-                value: '1M',
-                content: '1M',
+                key: '1m',
+                text: '1m',
+                value: '1m',
+                content: '1m',
             },
             {
-                key: '6M',
-                text: '6M',
-                value: '6M',
-                content: '6M',
+                key: '6m',
+                text: '6m',
+                value: '6m',
+                content: '6m',
             },
             {
-                key: '1Y',
-                text: '1Y',
-                value: '1Y',
-                content: '1Y',
+                key: '1y',
+                text: '1y',
+                value: '1y',
+                content: '1y',
             },
             {
-                key: '5Y',
-                text: '5Y',
-                value: '5Y',
-                content: '5Y',
+                key: '5y',
+                text: '5y',
+                value: '5y',
+                content: '5y',
             },                        
         ]
 

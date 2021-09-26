@@ -8,45 +8,56 @@ class BalanceSheet extends Component{
 
 	render(){		
 		const {data} = this.props;
-		console.log(data);
 		let balanceSheet = data.balancesheet;
+
+		// Reversed order for charts
 		let orderedBalanceSheet = balanceSheet.map((val, index, array) => array[array.length - 1 - index]);
 
-		const financials = balanceSheet.map((value, index) => {
+		const formatNumber = (value) => {
+			let inThousands = value / 1000;
+
+			return inThousands.toLocaleString(undefined, {maximumFractionDigits:0})
+		}
+
+		const financials = balanceSheet.map((value, index) => {	
 			return (				
 				 	<Table key={index} celled className="bs-table">
 				    	<Table.Header>
 				      		<Table.Row>
 				        		<Table.HeaderCell>{value.reportDate}</Table.HeaderCell>
-				        		<Table.HeaderCell>Value</Table.HeaderCell>
+				        		<Table.HeaderCell>Value (All numbers in thousands)</Table.HeaderCell>
 				      		</Table.Row>
 				    	</Table.Header>
 
 				    	<Table.Body>
 				      		<Table.Row>
+				        		<Table.Cell>Accounts Receivables</Table.Cell>
+				        		<Table.Cell>{formatNumber(value.receivables)}</Table.Cell>
+				      		</Table.Row>				    					    	
+				      		<Table.Row>
 				        		<Table.Cell>Accounts Payable</Table.Cell>
-				        		<Table.Cell>{value.accountsPayable.toLocaleString(undefined, {maximumFractionDigits:3})}</Table.Cell>
-				      		</Table.Row>
+				        		<Table.Cell>{formatNumber(value.accountsPayable)}</Table.Cell>
+				      		</Table.Row>				      		
 				      	    <Table.Row>
 				       			<Table.Cell>Current Assets</Table.Cell>
-				        		<Table.Cell>{value.currentAssets.toLocaleString(undefined, {maximumFractionDigits:3})}</Table.Cell>
+				        		<Table.Cell>{formatNumber(value.currentAssets)}</Table.Cell>
 				      		</Table.Row>
 				      	    <Table.Row>
-				       			<Table.Cell>Current LongTerm Debt</Table.Cell>
-				        		<Table.Cell>{value.currentLongTermDebt.toLocaleString(undefined, {maximumFractionDigits:3})}</Table.Cell>
+				       			<Table.Cell>Current Liabilities</Table.Cell>
+				        		<Table.Cell>{formatNumber(value.currentLongTermDebt)}</Table.Cell>
 				      		</Table.Row>
 				      	    <Table.Row>
 				       			<Table.Cell>Total Assets</Table.Cell>
-				        		<Table.Cell>{value.totalAssets.toLocaleString(undefined, {maximumFractionDigits:3})}</Table.Cell>
+				        		<Table.Cell>{formatNumber(value.totalAssets)}</Table.Cell>
 				      		</Table.Row>
 				      	    <Table.Row>
 				       			<Table.Cell>Total Liabilities</Table.Cell>
-				        		<Table.Cell>{value.totalCurrentLiabilities.toLocaleString(undefined, {maximumFractionDigits:3})}</Table.Cell>
+				        		<Table.Cell>{formatNumber(value.totalLiabilities)}</Table.Cell>
 				      		</Table.Row>				      						      						      		
 				    	</Table.Body>
 				  	</Table>
 			)			
-		})
+		});
 
 	    return (
 	    	<div>
@@ -58,7 +69,7 @@ class BalanceSheet extends Component{
 					<Grid.Column id="c2" width="8">
 
 						<Grid.Row>					
-						<h3>Assets vs Liabilities</h3>
+						<h3>Total Assets vs Total Liabilities</h3>
 						<AreaChart padding={0} width={600} height={250} data={orderedBalanceSheet}>
 							<defs>
 							   	<linearGradient id="colorAssets" x1="0" y1="0" x2="0" y2="1">
@@ -80,14 +91,14 @@ class BalanceSheet extends Component{
 						</Grid.Row>
 
 						<Grid.Row>
-						<h3>Long-term Debt vs Short-term Debt</h3>
+						<h3>Current Assets vs Liabilities</h3>
 						<BarChart width={600} height={250} data={orderedBalanceSheet}>
 							<CartesianGrid strokeDasharray="3 3 3" />
 						  	<XAxis dataKey="reportDate" />
 						  	<YAxis width={0}/>
 						  	<Tooltip />
 						  	<Bar name="Current Assets" dataKey="currentAssets" fill="#82ca9d" />
-						 	<Bar name="Short-term debt" dataKey="totalCurrentLiabilities" fill="#8884d8" />
+						 	<Bar name="Current Liabilities" dataKey="currentLongTermDebt" fill="#f44336" />
 						</BarChart>
 						</Grid.Row>
 

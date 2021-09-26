@@ -4,7 +4,6 @@ import './index.css';
 class News extends Component{
 	render(){
 		const { data } = this.props;
-		console.log(data);
 
 		const convertEpochMilliseconds = (article) => {
 			const epochMilliseconds = article.datetime;
