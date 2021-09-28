@@ -16,7 +16,8 @@ class HomeDashboard extends Component {
             balanceSheet: null,
             cashFlow: null,
             price: null,
-            dateRange: '5y'
+            dateRange: '5y',
+            requested: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.fetchFinancialData = this.fetchFinancialData.bind(this);
@@ -30,36 +31,42 @@ class HomeDashboard extends Component {
 
     timeChange(event){
         const dropDownValue = event.target.innerText;
-        console.log(dropDownValue);
-
-        this.setState({dateRange: dropDownValue});
+        this.setState({
+            dateRange: dropDownValue,
+            requested: false
+        });
     }
 
     async fetchFinancialData(){
         const bulkRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=company,news,price,chart&range=${this.state.dateRange}&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
         const financialsRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=balance-sheet,income,cash-flow&period=annual&last=5&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
-        console.log(bulkRequest);
-        
-        fetch(bulkRequest)
-        .then(response => response.json())
-        .then((data) => {
-            this.setState({
-                companyData: data.company,
-                companyChart: data.chart,                
-                companyNews: data.news,
-                price: data.price       
-            });
 
-            return fetch(financialsRequest)
-        })
-        .then(response => response.json())
-        .then((data) => {
-            this.setState({
-                income: data.income,
-                balanceSheet: data["balance-sheet"],
-                cashFlow: data["cash-flow"]
+        if (!this.state.requested){
+            fetch(bulkRequest)
+            .then(response => response.json())
+            .then((data) => {
+                this.setState({
+                    companyData: data.company,
+                    companyChart: data.chart,                
+                    companyNews: data.news,
+                    price: data.price       
+                });
+
+                return fetch(financialsRequest)
             })
-        })
+            .then(response => response.json())
+            .then((data) => {
+                this.setState({
+                    income: data.income,
+                    balanceSheet: data["balance-sheet"],
+                    cashFlow: data["cash-flow"],
+                    requested: true
+                })
+            })
+        }
+        else {
+            console.log("Already Requested")
+        }
     }
 
 
