@@ -10,34 +10,29 @@ const Navbar = () => {
     const { user, isAuthenticated } = useAuth0();
 
     return (
-            <div id="navbar">
-                <Menu borderless="true" size='huge'>                
-                        <Menu.Item className="menu-item">
-                            <Image id="logo" size="small" src="https://bull-insights.s3.amazonaws.com/images/bull-logo.png"/>
-                        </Menu.Item>
-                        <Menu.Menu position='right'>
-                            <Menu.Item>                            
-                                <h3 className="menu-item">News</h3>                              
-                            </Menu.Item>
-                            <Menu.Item>                            
-                                <h3 className="menu-item">Blog</h3>                              
-                            </Menu.Item>
-                            <Menu.Item>                            
-                                <h3 className="menu-item">Company</h3>                              
-                            </Menu.Item>
-                            {
-                                isAuthenticated ? 
-                                    <Menu.Item>
-                                        <Profile user={user}/>
-                                    </Menu.Item>
-                                : <div></div>
-                            }                                                                                                                                                                                      
-                            <Menu.Item>                            
-                                {isAuthenticated ? <Logout /> : <Login /> }
-                            </Menu.Item>                            
-                        </Menu.Menu>
-                </Menu>
+        <Menu id="menu-container" borderless="true" vertical size="large">                
+            <Menu.Item className="nav-header">
+                { isAuthenticated ? <Profile user={user}/> : <Image id="logo" id="nav-logo" src="https://bull-insights.s3.amazonaws.com/images/bull-logo.png"/> }
+            </Menu.Item>
+
+            <div id="menu-item-container">
+                <Menu.Item className="menu-item">
+                    <h3 className="link">News</h3>                              
+                </Menu.Item>            
+                <Menu.Item className="menu-item">                            
+                    <h3 className="link">Blog</h3>                              
+                </Menu.Item>                                    
+                <Menu.Item className="menu-item">                            
+                    <h3 className="link">Company</h3>                              
+                </Menu.Item>
             </div>
+            
+            <div id="login-container">     
+                <Menu.Item className="menu-item">                            
+                    {isAuthenticated ? <Logout /> : <Login /> }
+                </Menu.Item>
+            </div>                                                                                                                                                                                                                           
+        </Menu>
     )   
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Button, Header, Dropdown, Icon } from 'semantic-ui-react';
+import { Input, Button, Dropdown, Icon } from 'semantic-ui-react';
 import CompanyDashboard from '../CompanyDashboard/index';
 import './index.css';
 
@@ -99,19 +99,19 @@ class HomeDashboard extends Component {
         ]
 
         return (
-            <div className="App">
+            <div className="dashboard">
                 <div id="nav-container">
                     <div id="input-container">
-                        <Input name="symbol" id="ticker-input" placeholder='Enter Ticker Symbol...' value={this.state.value} onChange={this.handleChange}/>
-                        <Button id="search-button" ref={this.textInput} onClick={this.fetchFinancialData}>Search</Button>
-                            <Icon name='calendar alternate' />
-                            <Dropdown
-                                inline
-                                onChange={this.timeChange}
-                                header='Adjust time span'
-                                options={options}
-                                defaultValue={options[0].value}
-                            />
+                        <Dropdown
+                            icon="calendar alternate"
+                            inline
+                            onChange={this.timeChange}
+                            header='Adjust time span'
+                            options={options}
+                            defaultValue={options[0].value}
+                        />                    
+                        <Input name="symbol" id="ticker-input" placeholder='Enter Ticker Symbol...' value={this.state.value} onChange={this.handleChange}/>                        
+                        <Button icon="search" id="search-button" ref={this.textInput} onClick={this.fetchFinancialData}/>
                     </div>
                 </div>
                 <div id="app-body">

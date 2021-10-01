@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Dropdown } from 'semantic-ui-react';
 import './index.css';
 
@@ -25,7 +24,8 @@ class Profile extends Component {
 		]
 
 		return(
-			<Dropdown       
+			<Dropdown
+				floating				
 				inline
       			options={options}
       			defaultValue={options[0].value}

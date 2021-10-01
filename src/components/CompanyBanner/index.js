@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import './index.css';
 
-const HomePage = () => {
+const CompanyBanner = () => {
 	const { isAuthenticated } = useAuth0();
 
     return (
@@ -15,4 +15,4 @@ const HomePage = () => {
     );  	
 }
 
-export default HomePage;
+export default CompanyBanner;

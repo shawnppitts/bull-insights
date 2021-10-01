@@ -1,33 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
-
 #nav-container{
-	text-align: center;
-	height:60px;
-	border-bottom: none;
+	width: 100%;
 }
 
 #input-container{
 	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 #ticker-input{
-	width: 250px;
+	width: 200px;
 	text-align: center;
 	font-family: "Source Sans Pro";
 	font-weight: 100;
+	background: none;
+	border: none;
 }
 
 #search-button{
 	margin-left: 10px;
-	background: #BF953F;
-	color: white;
+	background: none;
+	color: black;
 	font-family: "Source Sans Pro";
 	font-weight: 100;
 }
 
 #app-body{
 	background: 100%;
+	padding-right: 15px;
 }
 
 #fetch-message{

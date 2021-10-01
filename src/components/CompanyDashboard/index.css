@@ -2,20 +2,19 @@
 
 .dashboard-container{
 /*	background: linear-gradient(#BF953F, #56CCF2);*/	
-	background: #424242;
 	padding-top: 25px;
 	display: flex;
 	justify-content: space-between;
 }
 
 .yAxis{
-	color: white;
+	color: black;
 }
 
 .company-info-container{
 	padding-top: 20px;
 	font-family: "Source Sans Pro";
-	color: white;
+	color: black;
 	float: left;
 	margin-left: 10%;
 }
