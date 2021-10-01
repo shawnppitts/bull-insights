@@ -27,6 +27,10 @@ class HomeDashboard extends Component {
     handleChange(event) {
         const formatSymbol = event.target.value.toUpperCase();
         this.setState({value: formatSymbol});
+
+        if (this.state.value != formatSymbol){
+            this.setState({requested: false});
+        }
     }
 
     timeChange(event){
@@ -66,6 +70,7 @@ class HomeDashboard extends Component {
         }
         else {
             console.log("Already Requested")
+            return;
         }
     }
 
