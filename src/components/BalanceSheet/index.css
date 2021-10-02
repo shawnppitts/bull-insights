@@ -3,10 +3,27 @@
 }
 
 .bs-table{
-	width: 65% !important;
+	width: 100% !important;
+	font-size: 12px;
 }
 
 #grid{
 	padding-top: 20px;
 	border: 3px solid black;
+}
+
+#charts-container{
+	padding-top: 20px;
+}
+
+#chart-column1{
+	height: 300px;
+}
+
+#bar-chart-responsive > .recharts-wrapper{
+	position: absolute !important;
+}
+
+#pie-chart-responsive > .recharts-wrapper{
+	position: absolute !important;
 }

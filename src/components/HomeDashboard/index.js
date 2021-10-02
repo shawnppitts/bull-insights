@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Button, Dropdown, Icon } from 'semantic-ui-react';
+import { Input, Button, Dropdown } from 'semantic-ui-react';
 import CompanyDashboard from '../CompanyDashboard/index';
 import './index.css';
 
@@ -108,7 +108,6 @@ class HomeDashboard extends Component {
                 <div id="nav-container">
                     <div id="input-container">
                         <Dropdown
-                            icon="calendar alternate"
                             inline
                             onChange={this.timeChange}
                             header='Adjust time span'

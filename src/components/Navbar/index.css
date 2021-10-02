@@ -17,11 +17,15 @@
 
 #menu-container{
 	width: 100%;
+	height: 100%;
+	border: none;
+	box-shadow: none;
 }
 
 #menu-item-container{
 	padding-top: 100px;
 }
+
 .menu-item{
 	padding-top: 2px;
 	margin-right: 10px;
@@ -40,5 +44,6 @@
 }
 
 #login-container{
-	padding-top: 220px;
+	bottom: 0;
+	position: fixed;
 }

@@ -17,14 +17,20 @@ const Navbar = () => {
 
             <div id="menu-item-container">
                 <Menu.Item className="menu-item">
-                    <h3 className="link">News</h3>                              
+                    <h3 className="link">Market News</h3>                              
                 </Menu.Item>            
                 <Menu.Item className="menu-item">                            
                     <h3 className="link">Blog</h3>                              
                 </Menu.Item>                                    
                 <Menu.Item className="menu-item">                            
-                    <h3 className="link">Company</h3>                              
+                    <h3 className="link">Cryptocurrency</h3>                              
                 </Menu.Item>
+                <Menu.Item className="menu-item">                            
+                    <h3 className="link">Forex</h3>                              
+                </Menu.Item>
+                <Menu.Item className="menu-item">                            
+                    <h3 className="link">Commodities</h3>                              
+                </Menu.Item>                                
             </div>
             
             <div id="login-container">     

@@ -16,7 +16,7 @@
 	font-family: "Source Sans Pro";
 	color: black;
 	float: left;
-	margin-left: 10%;
+	margin-left: 2%;
 }
 
 #company-info-specifics{
@@ -60,4 +60,13 @@
 .recharts-wrapper{
 	float: right;
 	margin-right: 200px;
+}
+
+.tab-container{
+	background: none;
+}
+
+div.ui.bottom.attached.segment.active.tab.panes{
+	background: none;
+	border: none;
 }
