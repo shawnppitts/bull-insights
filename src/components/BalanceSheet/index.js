@@ -8,7 +8,7 @@ class BalanceSheet extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			toggleView: '',
+			toggleView: 'Table',
 		}
         this.toggleView = this.toggleView.bind(this);
 	}

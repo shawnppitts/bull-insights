@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Input, Button, Dropdown } from 'semantic-ui-react';
 import CompanyDashboard from '../CompanyDashboard/index';
 import './index.css';
+require('dotenv').config();
 
 class HomeDashboard extends Component {
 
@@ -42,8 +43,8 @@ class HomeDashboard extends Component {
     }
 
     async fetchFinancialData(){
-        const bulkRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=company,news,price,chart&range=${this.state.dateRange}&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
-        const financialsRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=balance-sheet,income,cash-flow&period=annual&last=5&token=Tsk_6fc44360c16149f2b63503e4cdd0ebbc`;
+        const bulkRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=company,news,price,chart&range=${this.state.dateRange}&token=${process.env.REACT_APP_IEXCLOUD_SANDBOX_TOKEN}`;
+        const financialsRequest = `https://sandbox.iexapis.com/stable/stock/${this.state.value}/batch?types=balance-sheet,income,cash-flow&period=annual&last=5&token=${process.env.REACT_APP_IEXCLOUD_SANDBOX_TOKEN}`;
 
         if (!this.state.requested){
             fetch(bulkRequest)
